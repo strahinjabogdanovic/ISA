@@ -21,5 +21,5 @@ public class Patient {
     private int id;
     @OneToOne(fetch=FetchType.LAZY)
     private User user;
-    private List<LocalDate> penaltyPoints;
+    /*private List<LocalDate> penaltyPoints;*/
 }
