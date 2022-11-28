@@ -5,10 +5,12 @@ import com.example.demo.model.dto.LoginDTO;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.IAuthService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthService implements IAuthService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public AuthService(UserRepository userRepository){
         this.userRepository = userRepository;
@@ -16,8 +18,8 @@ public class AuthService implements IAuthService {
 
     @Override
     public UserDTO login(LoginDTO request) {
-        User user = userRepository.findOneByUsername(request.getUsername());
-        if(user == null) {
+        User user = userRepository.findById(request.getEmail());
+        if(user != null) {
             return userToUserDTO(user);
         }
         else {
@@ -34,7 +36,7 @@ public class AuthService implements IAuthService {
     private UserDTO userToUserDTO(User user){
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
-        userDTO.setUsername(user.getEmail());
+        userDTO.setEmail(user.getEmail());
         return userDTO;
     }
 }
