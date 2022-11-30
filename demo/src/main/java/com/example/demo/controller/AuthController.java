@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.model.dto.LoginDTO;
+import com.example.demo.model.dto.RegistrationDTO;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.service.IAuthService;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +26,10 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public UserDTO registration(@RequestBody User user) {
+    public UserDTO registration(@RequestBody RegistrationDTO data) {
         System.out.printf("ovde2");
         //front salje sve, back ne dobija nista
-        return authService.registerSubject(user);
+        return authService.registerSubject(data);
     }
 
 }

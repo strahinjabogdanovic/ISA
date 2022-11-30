@@ -8,13 +8,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegistrationDTO {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    public int Id;
+    public String Name;
+    public String Surname;
+    public String Username;
+    public String Password;
     private String rePassword;
-    private String address;
-    private String town;
-    private String state;
-    private String phone;
+    public String Address;
+    public String Town;
+    public String State;
+    public String Phone;
+    public String Jmbg;
+    public String Gender;
+
 }
+

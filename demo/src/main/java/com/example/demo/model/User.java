@@ -1,10 +1,12 @@
 package com.example.demo.model;
 
+import com.example.demo.model.dto.RegistrationDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.naming.Name;
 import javax.persistence.*;
 
 @Entity
@@ -38,5 +40,25 @@ public class User {
 
     public String getFullName() { return name + " " + surname;}
 
+    public User(RegistrationDTO registrationDTO)
+    {
+        name = registrationDTO.Name;
+        surname = registrationDTO.Surname;
+        email = registrationDTO.Username;
+        password = registrationDTO.Password;
+        phone = registrationDTO.Phone;
+        JMBG = registrationDTO.Jmbg;
+        address.setStreet(registrationDTO.Address);
+        address.setTown(registrationDTO.Town);
+        address.setState(registrationDTO.State);
+        if (registrationDTO.Gender.toLowerCase().equals(Gender.Male.toString().toLowerCase()))
+        {
+            gender = Gender.Male;
+        }
+        else
+        {
+            gender = Gender.Female;
+        }
+    }
 
 }

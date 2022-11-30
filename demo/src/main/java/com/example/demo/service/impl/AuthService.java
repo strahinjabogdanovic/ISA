@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.User;
 import com.example.demo.model.dto.LoginDTO;
+import com.example.demo.model.dto.RegistrationDTO;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.IAuthService;
@@ -28,8 +29,8 @@ public class AuthService implements IAuthService {
     }
 
     @Override
-    public UserDTO registerSubject(User user) {
-        User newUser = userRepository.save(user);
+    public UserDTO registerSubject(RegistrationDTO data) {
+        User newUser = userRepository.save(data);
         return userToUserDTO(newUser);
     }
 
